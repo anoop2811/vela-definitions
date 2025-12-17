@@ -26,11 +26,10 @@ import (
 )
 
 var _ = Describe("Daemon Component", func() {
-
 	Describe("Daemon()", func() {
 		It("should create a daemon component definition", func() {
 			comp := components.Daemon()
-			Expect(comp.GetName()).To(Equal("daemon-new"))
+			Expect(comp.GetName()).To(Equal("daemon"))
 			Expect(comp.GetDescription()).To(ContainSubstring("daemonset"))
 		})
 
@@ -71,5 +70,4 @@ var _ = Describe("Daemon Component", func() {
 			Expect(outputs["webserviceExpose"]).To(BeService())
 		})
 	})
-
 })

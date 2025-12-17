@@ -26,11 +26,10 @@ import (
 )
 
 var _ = Describe("Task Component", func() {
-
 	Describe("Task()", func() {
 		It("should create a task component definition", func() {
 			comp := components.Task()
-			Expect(comp.GetName()).To(Equal("task-new"))
+			Expect(comp.GetName()).To(Equal("task"))
 			Expect(comp.GetDescription()).To(ContainSubstring("completion"))
 		})
 
@@ -61,5 +60,4 @@ var _ = Describe("Task Component", func() {
 			Expect(tpl.GetOutput()).To(HaveAPIVersion("batch/v1"))
 		})
 	})
-
 })

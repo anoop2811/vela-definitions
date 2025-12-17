@@ -20,17 +20,17 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
+	"github.com/anoop2811/vela-definitions/components"
+
 	"github.com/oam-dev/kubevela/pkg/definition/defkit"
-	"github.com/oam-dev/kubevela/pkg/definition/defkit/components"
 	. "github.com/oam-dev/kubevela/pkg/definition/defkit/testing/matchers"
 )
 
 var _ = Describe("StatefulSet Component", func() {
-
 	Describe("StatefulSet()", func() {
 		It("should create a statefulset component definition", func() {
 			comp := components.StatefulSet()
-			Expect(comp.GetName()).To(Equal("statefulset-new"))
+			Expect(comp.GetName()).To(Equal("statefulset"))
 			Expect(comp.GetDescription()).To(ContainSubstring("stateful"))
 		})
 
@@ -73,5 +73,4 @@ var _ = Describe("StatefulSet Component", func() {
 			Expect(outputs["statefulsetHeadless"]).To(BeService())
 		})
 	})
-
 })

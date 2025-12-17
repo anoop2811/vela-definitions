@@ -26,11 +26,10 @@ import (
 )
 
 var _ = Describe("Webservice Component", func() {
-
 	Describe("Webservice()", func() {
 		It("should create a webservice component definition", func() {
 			comp := components.Webservice()
-			Expect(comp.GetName()).To(Equal("webservice-new"))
+			Expect(comp.GetName()).To(Equal("webservice"))
 			Expect(comp.GetDescription()).To(ContainSubstring("long-running, scalable, containerized services"))
 		})
 

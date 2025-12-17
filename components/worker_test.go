@@ -26,11 +26,10 @@ import (
 )
 
 var _ = Describe("Worker Component", func() {
-
 	Describe("Worker()", func() {
 		It("should create a worker component definition", func() {
 			comp := components.Worker()
-			Expect(comp.GetName()).To(Equal("worker-new"))
+			Expect(comp.GetName()).To(Equal("worker"))
 			Expect(comp.GetDescription()).To(ContainSubstring("backend"))
 		})
 
@@ -68,5 +67,4 @@ var _ = Describe("Worker Component", func() {
 			Expect(outputs).To(BeEmpty())
 		})
 	})
-
 })

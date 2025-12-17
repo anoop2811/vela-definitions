@@ -183,7 +183,7 @@ func Daemon() *defkit.ComponentDefinition {
 			defkit.StringList("hostnames").Required(),
 		)
 
-	return defkit.NewComponent("daemon-new").
+	return defkit.NewComponent("daemon").
 		Description("Describes daemonset services in Kubernetes.").
 		Workload("apps/v1", "DaemonSet").
 		CustomStatus(defkit.DaemonSetStatus().Build()).
@@ -338,4 +338,8 @@ func daemonTemplate(tpl *defkit.Template) {
 		Set("spec.type", exposeType)
 
 	tpl.OutputsIf(exposePorts.NotEmpty(), "webserviceExpose", service)
+}
+
+func init() {
+	defkit.Register(Daemon())
 }

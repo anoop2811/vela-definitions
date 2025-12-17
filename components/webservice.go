@@ -212,7 +212,7 @@ func Webservice() *defkit.ComponentDefinition {
 			defkit.StringList("hostnames").Required(),
 		)
 
-	return defkit.NewComponent("webservice-new").
+	return defkit.NewComponent("webservice").
 		Description("Describes long-running, scalable, containerized services that have a stable network endpoint to receive external network traffic from customers.").
 		Workload("apps/v1", "Deployment").
 		CustomStatus(defkit.DeploymentStatus().Build()).
@@ -380,4 +380,8 @@ func webserviceTemplate(tpl *defkit.Template) {
 		Set("spec.ports", exposePorts)
 
 	tpl.OutputsIf(exposePorts.NotEmpty(), "webserviceExpose", service)
+}
+
+func init() {
+	defkit.Register(Webservice())
 }

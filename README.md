@@ -92,7 +92,7 @@ func myComponentTemplate(tpl *defkit.Template) {
 
 ## Version
 
-v0.1.0
+Version is automatically derived from git tags. Use semantic versioning tags (e.g., v1.0.0) to set the module version.
 
 ## License
 

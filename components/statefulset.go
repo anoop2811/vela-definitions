@@ -137,7 +137,7 @@ func StatefulSet() *defkit.ComponentDefinition {
 	labels := defkit.Object("labels").Description("Specify the labels in the workload")
 	annotations := defkit.Object("annotations").Description("Specify the annotations in the workload")
 
-	return defkit.NewComponent("statefulset-new").
+	return defkit.NewComponent("statefulset").
 		Description("Describes stateful applications with persistent storage and stable network identities.").
 		Workload("apps/v1", "StatefulSet").
 		CustomStatus(defkit.StatefulSetStatus().Build()).
@@ -253,4 +253,8 @@ func statefulsetTemplate(tpl *defkit.Template) {
 		SetIf(ports.IsSet(), "spec.ports", servicePorts)
 
 	tpl.Outputs("statefulsetExpose", exposeService)
+}
+
+func init() {
+	defkit.Register(StatefulSet())
 }

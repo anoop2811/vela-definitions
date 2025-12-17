@@ -20,17 +20,17 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
+	"github.com/anoop2811/vela-definitions/components"
+
 	"github.com/oam-dev/kubevela/pkg/definition/defkit"
-	"github.com/oam-dev/kubevela/pkg/definition/defkit/components"
 	. "github.com/oam-dev/kubevela/pkg/definition/defkit/testing/matchers"
 )
 
 var _ = Describe("CronTask Component", func() {
-
 	Describe("CronTask()", func() {
 		It("should create a cron-task component definition", func() {
 			comp := components.CronTask()
-			Expect(comp.GetName()).To(Equal("cron-task-new"))
+			Expect(comp.GetName()).To(Equal("cron-task"))
 			Expect(comp.GetDescription()).To(ContainSubstring("cron"))
 		})
 
@@ -66,5 +66,4 @@ var _ = Describe("CronTask Component", func() {
 			Expect(tpl.GetOutput().HasVersionConditionals()).To(BeTrue())
 		})
 	})
-
 })

@@ -146,7 +146,7 @@ func CronTask() *defkit.ComponentDefinition {
 		WithSchemaRef("HealthProbe").
 		Description("Instructions for assessing whether the container is in a suitable state to serve traffic.")
 
-	return defkit.NewComponent("cron-task-new").
+	return defkit.NewComponent("cron-task").
 		Description("Describes cron jobs that run code or a script to completion.").
 		AutodetectWorkload().
 		Helper("HealthProbe", HealthProbeParam()).
@@ -369,4 +369,8 @@ func cronTaskTemplate(tpl *defkit.Template) {
 		SetIf(hostAliases.IsSet(), "spec.jobTemplate.spec.template.spec.hostAliases", hostAliases)
 
 	tpl.Output(cronjob)
+}
+
+func init() {
+	defkit.Register(CronTask())
 }
